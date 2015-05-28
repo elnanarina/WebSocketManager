@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4566B13A1B1501D100CC1EAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B1391B1501D100CC1EAA /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4566B13D1B1501D100CC1EAA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B13C1B1501D100CC1EAA /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4566B1401B1501D100CC1EAA /* WebSocketManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4566B13E1B1501D100CC1EAA /* WebSocketManager.xcdatamodeld */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4566B1431B1501D100CC1EAA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B1421B1501D100CC1EAA /* ViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4566B1461B1501D100CC1EAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4566B1441B1501D100CC1EAA /* Main.storyboard */; };
+		4566B1481B1501D100CC1EAA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4566B1471B1501D100CC1EAA /* Images.xcassets */; };
+		4566B14B1B1501D100CC1EAA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4566B1491B1501D100CC1EAA /* LaunchScreen.xib */; };
+		4566B1571B1501D100CC1EAA /* WebSocketManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B1561B1501D100CC1EAA /* WebSocketManagerTests.m */; };
+		4566B1611B15023F00CC1EAA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4566B1601B15023F00CC1EAA /* CFNetwork.framework */; };
+		4566B1641B1502CB00CC1EAA /* KGWebSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4566B1631B1502CB00CC1EAA /* KGWebSocket.framework */; };
+		4566B1681B1503DB00CC1EAA /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B1671B1503DB00CC1EAA /* Packet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4566B16F1B15D1C300CC1EAA /* InfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B16E1B15D1C300CC1EAA /* InfoTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4566B1721B15D24C00CC1EAA /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B1711B15D24C00CC1EAA /* DataManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4566B1751B15D32700CC1EAA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B1741B15D32700CC1EAA /* DetailViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4566B1511B1501D100CC1EAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4566B12C1B1501D100CC1EAA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4566B1331B1501D100CC1EAA;
+			remoteInfo = WebSocketManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4566B1341B1501D100CC1EAA /* WebSocketManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebSocketManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4566B1381B1501D100CC1EAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4566B1391B1501D100CC1EAA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4566B13B1B1501D100CC1EAA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4566B13C1B1501D100CC1EAA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4566B13F1B1501D100CC1EAA /* WebSocketManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WebSocketManager.xcdatamodel; sourceTree = "<group>"; };
+		4566B1411B1501D100CC1EAA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4566B1421B1501D100CC1EAA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4566B1451B1501D100CC1EAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4566B1471B1501D100CC1EAA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4566B14A1B1501D100CC1EAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		4566B1501B1501D100CC1EAA /* WebSocketManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebSocketManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4566B1551B1501D100CC1EAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4566B1561B1501D100CC1EAA /* WebSocketManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketManagerTests.m; sourceTree = "<group>"; };
+		4566B1601B15023F00CC1EAA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4566B1631B1502CB00CC1EAA /* KGWebSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGWebSocket.framework; path = WebSocketManager/KGWebSocket.framework; sourceTree = "<group>"; };
+		4566B1661B1503DB00CC1EAA /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
+		4566B1671B1503DB00CC1EAA /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
+		4566B16D1B15D1C300CC1EAA /* InfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoTableViewController.h; sourceTree = "<group>"; };
+		4566B16E1B15D1C300CC1EAA /* InfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoTableViewController.m; sourceTree = "<group>"; };
+		4566B1701B15D24B00CC1EAA /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		4566B1711B15D24C00CC1EAA /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		4566B1731B15D32700CC1EAA /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		4566B1741B15D32700CC1EAA /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4566B1311B1501D100CC1EAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4566B1641B1502CB00CC1EAA /* KGWebSocket.framework in Frameworks */,
+				4566B1611B15023F00CC1EAA /* CFNetwork.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4566B14D1B1501D100CC1EAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4566B12B1B1501D100CC1EAA = {
+			isa = PBXGroup;
+			children = (
+				4566B1361B1501D100CC1EAA /* WebSocketManager */,
+				4566B1531B1501D100CC1EAA /* WebSocketManagerTests */,
+				4566B1351B1501D100CC1EAA /* Products */,
+				4566B1621B15025800CC1EAA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4566B1351B1501D100CC1EAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4566B1341B1501D100CC1EAA /* WebSocketManager.app */,
+				4566B1501B1501D100CC1EAA /* WebSocketManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4566B1361B1501D100CC1EAA /* WebSocketManager */ = {
+			isa = PBXGroup;
+			children = (
+				4566B1651B1503B800CC1EAA /* Model */,
+				4566B13B1B1501D100CC1EAA /* AppDelegate.h */,
+				4566B13C1B1501D100CC1EAA /* AppDelegate.m */,
+				4566B1411B1501D100CC1EAA /* ViewController.h */,
+				4566B1421B1501D100CC1EAA /* ViewController.m */,
+				4566B16D1B15D1C300CC1EAA /* InfoTableViewController.h */,
+				4566B16E1B15D1C300CC1EAA /* InfoTableViewController.m */,
+				4566B1731B15D32700CC1EAA /* DetailViewController.h */,
+				4566B1741B15D32700CC1EAA /* DetailViewController.m */,
+				4566B1701B15D24B00CC1EAA /* DataManager.h */,
+				4566B1711B15D24C00CC1EAA /* DataManager.m */,
+				4566B1441B1501D100CC1EAA /* Main.storyboard */,
+				4566B1471B1501D100CC1EAA /* Images.xcassets */,
+				4566B1491B1501D100CC1EAA /* LaunchScreen.xib */,
+				4566B13E1B1501D100CC1EAA /* WebSocketManager.xcdatamodeld */,
+				4566B1371B1501D100CC1EAA /* Supporting Files */,
+			);
+			path = WebSocketManager;
+			sourceTree = "<group>";
+		};
+		4566B1371B1501D100CC1EAA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4566B1381B1501D100CC1EAA /* Info.plist */,
+				4566B1391B1501D100CC1EAA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4566B1531B1501D100CC1EAA /* WebSocketManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				4566B1561B1501D100CC1EAA /* WebSocketManagerTests.m */,
+				4566B1541B1501D100CC1EAA /* Supporting Files */,
+			);
+			path = WebSocketManagerTests;
+			sourceTree = "<group>";
+		};
+		4566B1541B1501D100CC1EAA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4566B1551B1501D100CC1EAA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4566B1621B15025800CC1EAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4566B1631B1502CB00CC1EAA /* KGWebSocket.framework */,
+				4566B1601B15023F00CC1EAA /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4566B1651B1503B800CC1EAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4566B1661B1503DB00CC1EAA /* Packet.h */,
+				4566B1671B1503DB00CC1EAA /* Packet.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4566B1331B1501D100CC1EAA /* WebSocketManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4566B15A1B1501D100CC1EAA /* Build configuration list for PBXNativeTarget "WebSocketManager" */;
+			buildPhases = (
+				4566B1301B1501D100CC1EAA /* Sources */,
+				4566B1311B1501D100CC1EAA /* Frameworks */,
+				4566B1321B1501D100CC1EAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WebSocketManager;
+			productName = WebSocketManager;
+			productReference = 4566B1341B1501D100CC1EAA /* WebSocketManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4566B14F1B1501D100CC1EAA /* WebSocketManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4566B15D1B1501D100CC1EAA /* Build configuration list for PBXNativeTarget "WebSocketManagerTests" */;
+			buildPhases = (
+				4566B14C1B1501D100CC1EAA /* Sources */,
+				4566B14D1B1501D100CC1EAA /* Frameworks */,
+				4566B14E1B1501D100CC1EAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4566B1521B1501D100CC1EAA /* PBXTargetDependency */,
+			);
+			name = WebSocketManagerTests;
+			productName = WebSocketManagerTests;
+			productReference = 4566B1501B1501D100CC1EAA /* WebSocketManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4566B12C1B1501D100CC1EAA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Eugeniya Pervushina";
+				TargetAttributes = {
+					4566B1331B1501D100CC1EAA = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					4566B14F1B1501D100CC1EAA = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 4566B1331B1501D100CC1EAA;
+					};
+				};
+			};
+			buildConfigurationList = 4566B12F1B1501D100CC1EAA /* Build configuration list for PBXProject "WebSocketManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4566B12B1B1501D100CC1EAA;
+			productRefGroup = 4566B1351B1501D100CC1EAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4566B1331B1501D100CC1EAA /* WebSocketManager */,
+				4566B14F1B1501D100CC1EAA /* WebSocketManagerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4566B1321B1501D100CC1EAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4566B1461B1501D100CC1EAA /* Main.storyboard in Resources */,
+				4566B14B1B1501D100CC1EAA /* LaunchScreen.xib in Resources */,
+				4566B1481B1501D100CC1EAA /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4566B14E1B1501D100CC1EAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4566B1301B1501D100CC1EAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4566B1681B1503DB00CC1EAA /* Packet.m in Sources */,
+				4566B13D1B1501D100CC1EAA /* AppDelegate.m in Sources */,
+				4566B1721B15D24C00CC1EAA /* DataManager.m in Sources */,
+				4566B1751B15D32700CC1EAA /* DetailViewController.m in Sources */,
+				4566B13A1B1501D100CC1EAA /* main.m in Sources */,
+				4566B1431B1501D100CC1EAA /* ViewController.m in Sources */,
+				4566B1401B1501D100CC1EAA /* WebSocketManager.xcdatamodeld in Sources */,
+				4566B16F1B15D1C300CC1EAA /* InfoTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4566B14C1B1501D100CC1EAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4566B1571B1501D100CC1EAA /* WebSocketManagerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4566B1521B1501D100CC1EAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4566B1331B1501D100CC1EAA /* WebSocketManager */;
+			targetProxy = 4566B1511B1501D100CC1EAA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4566B1441B1501D100CC1EAA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4566B1451B1501D100CC1EAA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4566B1491B1501D100CC1EAA /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4566B14A1B1501D100CC1EAA /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4566B1581B1501D100CC1EAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					Standard,
+					architectures,
+					"(armv7,",
+					"arm64)",
+					"-",
+					"$(ARCHS_STANDARD)",
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "i386 armv7";
+			};
+			name = Debug;
+		};
+		4566B1591B1501D100CC1EAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					Standard,
+					architectures,
+					"(armv7,",
+					"arm64)",
+					"-",
+					"$(ARCHS_STANDARD)",
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "i386 armv7";
+			};
+			name = Release;
+		};
+		4566B15B1B1501D100CC1EAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebSocketManager",
+				);
+				INFOPLIST_FILE = WebSocketManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4566B15C1B1501D100CC1EAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebSocketManager",
+				);
+				INFOPLIST_FILE = WebSocketManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4566B15E1B1501D100CC1EAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WebSocketManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebSocketManager.app/WebSocketManager";
+			};
+			name = Debug;
+		};
+		4566B15F1B1501D100CC1EAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WebSocketManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebSocketManager.app/WebSocketManager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4566B12F1B1501D100CC1EAA /* Build configuration list for PBXProject "WebSocketManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4566B1581B1501D100CC1EAA /* Debug */,
+				4566B1591B1501D100CC1EAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4566B15A1B1501D100CC1EAA /* Build configuration list for PBXNativeTarget "WebSocketManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4566B15B1B1501D100CC1EAA /* Debug */,
+				4566B15C1B1501D100CC1EAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4566B15D1B1501D100CC1EAA /* Build configuration list for PBXNativeTarget "WebSocketManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4566B15E1B1501D100CC1EAA /* Debug */,
+				4566B15F1B1501D100CC1EAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4566B13E1B1501D100CC1EAA /* WebSocketManager.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4566B13F1B1501D100CC1EAA /* WebSocketManager.xcdatamodel */,
+			);
+			currentVersion = 4566B13F1B1501D100CC1EAA /* WebSocketManager.xcdatamodel */;
+			path = WebSocketManager.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4566B12C1B1501D100CC1EAA /* Project object */;
+}
