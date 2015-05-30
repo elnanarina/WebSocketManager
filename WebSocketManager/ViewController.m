@@ -17,7 +17,9 @@ NSString *const ReceivedMessageUserInfoKey = @"ReceivedMessageUserInfoKey";
 
 static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
 
-@interface ViewController ()
+@interface ViewController () {
+    Reachability *_reachabilityInfo;
+}
 
 @property (retain, nonatomic) KGWebSocket *webSocket;
 @property (retain, nonatomic) KGWebSocketFactory *factory;
@@ -68,15 +70,16 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
                name:NSManagedObjectContextDidSaveNotification
              object:self.managedObjectContext];
     
-    Reachability *reachabilityInfo;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reachabilityChanged:)
                                                  name:kReachabilityChangedNotification
-                                               object:reachabilityInfo];
-    [reachabilityInfo startNotifier];
+                                               object:_reachabilityInfo];
+    [_reachabilityInfo startNotifier];
 }
 
 - (void)dealloc {
+    [_reachabilityInfo release];
     [_receivedMessage release];
     [_urlTextField release];
     [_webSocket release];
@@ -114,19 +117,10 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
     if ([self.connectionButton.titleLabel.text  isEqual: @"Connect"]) {
         NSString *url = self.urlTextField.text;
         
-        Reachability *reachability = [Reachability reachabilityForInternetConnection];
-        NetworkStatus internetStatus = [reachability currentReachabilityStatus];
-        
-        if (internetStatus != NotReachable) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [self createAndEstablishwebSocketConnection:url];
                 [self updateUI:YES];
             });
-            NSLog(@"True connection");
-        } else {
-            NSLog(@"Warning: No internet connection");
-            //there-is-no-connection warning
-        }
     } else {
         [self log:@"CLOSE"];
         @try {
@@ -182,21 +176,31 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
 
 - (void) createAndEstablishwebSocketConnection:(NSString *)location {
     @try {
-        [self log:@"CONNECTING"];
+        Reachability *reachability = [Reachability reachabilityForInternetConnection];
+        NetworkStatus internetStatus = [reachability currentReachabilityStatus];
         
-        // Create KGwebSocketFactory
-        self.factory = [KGWebSocketFactory createWebSocketFactory];
-        
-        // Create KGwebSocket from the KGwebSocketFactory
-        NSURL   *url = [NSURL URLWithString:location];
-        self.webSocket = [self.factory createWebSocket:url];
-        
-        // Setup webSocket events callbacks
-        // The application developer can use a delegate based approach as well.
-        [self setupwebSocketListeners];
-        [self.webSocket connect];
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        if (internetStatus != NotReachable) {
+            [self log:@"CONNECTING"];
+            
+            // Create KGwebSocketFactory
+            self.factory = [KGWebSocketFactory createWebSocketFactory];
+            
+            // Create KGwebSocket from the KGwebSocketFactory
+            NSURL   *url = [NSURL URLWithString:location];
+            self.webSocket = [self.factory createWebSocket:url];
+            
+            // Setup webSocket events callbacks
+            // The application developer can use a delegate based approach as well.
+            [self setupwebSocketListeners];
+            [self.webSocket connect];
+            
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            
+            NSLog(@"True connection");
+        } else {
+            NSLog(@"Warning: No internet connection");
+            //there-is-no-connection warning
+        }
     }
     @catch (NSException *exception) {
         [self log:[exception reason]];
@@ -310,9 +314,19 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
             dataToSend = binaryData;
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self.webSocket send:dataToSend];
-        });
+        Reachability *reachability = [Reachability reachabilityForInternetConnection];
+        NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+        
+        if (internetStatus != NotReachable) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [self.webSocket send:dataToSend];
+            });
+            
+            NSLog(@"True connection");
+        } else {
+            NSLog(@"Warning: No internet connection");
+            //there-is-no-connection warning
+        }
         
         [dateFormat release];
     }

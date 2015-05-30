@@ -16,15 +16,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WebSocketManager/ViewController.m"
-            timestampString = "454714004.426572"
+            timestampString = "454715114.10877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "-sendMessage:"
             landmarkType = "5">
          </BreakpointContent>
