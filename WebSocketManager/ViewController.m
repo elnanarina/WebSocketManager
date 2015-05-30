@@ -10,13 +10,16 @@
 #import "DataManager.h"
 #import "Packet.h"
 #import <KGWebSocket/WebSocket.h>
+#import "Reachability.h"
 
 NSString *const ReceivedMessageDidChangeNotification = @"ReceivedMessageDidChangeNotification";
 NSString *const ReceivedMessageUserInfoKey = @"ReceivedMessageUserInfoKey";
 
 static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
 
-@interface ViewController ()
+@interface ViewController () {
+    Reachability *_reachabilityInfo;
+}
 
 @property (retain, nonatomic) KGWebSocket *webSocket;
 @property (retain, nonatomic) KGWebSocketFactory *factory;
@@ -59,15 +62,26 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
     
     [self updateUI:NO];
     
+    
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     
     [nc addObserver:self
            selector:@selector(contextObjectsChangedNotification:)
                name:NSManagedObjectContextDidSaveNotification
              object:self.managedObjectContext];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:_reachabilityInfo];
+    [_reachabilityInfo startNotifier];
 }
 
 - (void)dealloc {
+    [_reachabilityInfo release];
+    [_receivedMessage release];
+    [_urlTextField release];
     [_webSocket release];
     [_factory release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -92,14 +106,22 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
     if([sender isOn]){
         // Switch is ON
         self.booleanSwitch.on = YES;
-        
-        NSString *url = self.urlTextField.text;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self createAndEstablishwebSocketConnection:url];
-            [self updateUI:YES];
-        });
     } else{
         // Switch is OFF
+        self.booleanSwitch.on = NO;
+    }
+}
+
+- (IBAction)connectionButton:(id)sender {
+    
+    if ([self.connectionButton.titleLabel.text  isEqual: @"Connect"]) {
+        NSString *url = self.urlTextField.text;
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [self createAndEstablishwebSocketConnection:url];
+                [self updateUI:YES];
+            });
+    } else {
         [self log:@"CLOSE"];
         @try {
             [_webSocket close];
@@ -108,7 +130,6 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
         @catch (NSException *exception) {
             [self log:[exception reason]];
         }
-        self.booleanSwitch.on = NO;
     }
 }
 
@@ -155,21 +176,31 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
 
 - (void) createAndEstablishwebSocketConnection:(NSString *)location {
     @try {
-        [self log:@"CONNECTING"];
+        Reachability *reachability = [Reachability reachabilityForInternetConnection];
+        NetworkStatus internetStatus = [reachability currentReachabilityStatus];
         
-        // Create KGwebSocketFactory
-        self.factory = [KGWebSocketFactory createWebSocketFactory];
-        
-        // Create KGwebSocket from the KGwebSocketFactory
-        NSURL   *url = [NSURL URLWithString:location];
-        self.webSocket = [self.factory createWebSocket:url];
-        
-        // Setup webSocket events callbacks
-        // The application developer can use a delegate based approach as well.
-        [self setupwebSocketListeners];
-        [self.webSocket connect];
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        if (internetStatus != NotReachable) {
+            [self log:@"CONNECTING"];
+            
+            // Create KGwebSocketFactory
+            self.factory = [KGWebSocketFactory createWebSocketFactory];
+            
+            // Create KGwebSocket from the KGwebSocketFactory
+            NSURL   *url = [NSURL URLWithString:location];
+            self.webSocket = [self.factory createWebSocket:url];
+            
+            // Setup webSocket events callbacks
+            // The application developer can use a delegate based approach as well.
+            [self setupwebSocketListeners];
+            [self.webSocket connect];
+            
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            
+            NSLog(@"True connection");
+        } else {
+            NSLog(@"Warning: No internet connection");
+            //there-is-no-connection warning
+        }
     }
     @catch (NSException *exception) {
         [self log:[exception reason]];
@@ -253,17 +284,16 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
         
         NSDictionary *dictionary = @{@"dataString"  : packet.dataString,
                                      @"switch": packet.booleanSwitch,
-                                     @"date"  : [dateFormat stringFromDate:packet.timeStamp]};
+                                     @"date"  : [dateFormat stringFromDate:packet.timeStamp],
+                                     @"type"  : packet.type };
         
         if ([packet.type isEqualToString:@"XML"]) {
-            NSString *xml = @"\n<packet>\n";
-            
-            for (NSString *key in [dictionary allKeys]) {
-                NSString *value = dictionary[key];
-                xml = [xml stringByAppendingString:[NSString stringWithFormat:@"\t<%@>%@</%@>\n", key, value, key]];
-            }
-            
-            xml = [xml stringByAppendingString:@"</packet>"];
+            NSData *data = [NSPropertyListSerialization dataWithPropertyList:dictionary
+                                                                      format:NSPropertyListXMLFormat_v1_0
+                                                                     options:0
+                                                                       error:nil];
+            NSString* xml = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]autorelease];
+
             [self log:[NSString stringWithFormat:@"SEND MESSAGE: %@", xml]];
             dataToSend = xml;
             
@@ -284,9 +314,19 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
             dataToSend = binaryData;
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self.webSocket send:dataToSend];
-        });
+        Reachability *reachability = [Reachability reachabilityForInternetConnection];
+        NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+        
+        if (internetStatus != NotReachable) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [self.webSocket send:dataToSend];
+            });
+            
+            NSLog(@"True connection");
+        } else {
+            NSLog(@"Warning: No internet connection");
+            //there-is-no-connection warning
+        }
         
         [dateFormat release];
     }
@@ -294,8 +334,6 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
         [self log:[exception reason]];
     }
 }
-
-
 
 - (void) log:(NSString *)msg {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -320,7 +358,7 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
 - (void) updateUI:(BOOL)connectStatus {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (connectStatus) {
-            self.connectIndicator.text = @"Connect";
+            [self.connectionButton setTitle:@"Disconnect" forState:UIControlStateNormal];
             self.urlTextField.enabled = NO;
             self.urlTextField.backgroundColor = [UIColor lightGrayColor];
             self.messageTextField.enabled = YES;
@@ -329,7 +367,7 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
             self.sendButton.alpha = 1.0f;
             
         } else {
-            self.connectIndicator.text = @"Disconnect";
+            [self.connectionButton setTitle:@"Connect" forState:UIControlStateNormal];
             self.urlTextField.enabled = YES;
             self.urlTextField.backgroundColor = [UIColor whiteColor];
             self.messageTextField.enabled = NO;
@@ -361,6 +399,21 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
                 }
             }
         }
+    }
+}
+
+- (void)reachabilityChanged: (NSNotification* )note
+{
+    Reachability* curReach = [note object];
+    NetworkStatus status = curReach.currentReachabilityStatus;
+    
+    switch (status) {
+        case NotReachable:
+            break;
+        case ReachableViaWiFi:
+            break;
+        case ReachableViaWWAN:
+            break;
     }
 }
 

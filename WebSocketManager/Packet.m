@@ -16,10 +16,10 @@
 @dynamic status;
 @dynamic type;
 @dynamic booleanSwitch;
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"Packet type: %@, dataString: %@, switch: %@, date: %@, status: %@",
-            self.type, self.dataString, self.booleanSwitch, self.timeStamp, self.status];
-}
+//
+//- (NSString *)description {
+//    return [NSString stringWithFormat:@"Packet type: %@, dataString: %@, switch: %@, date: %@, status: %@",
+//            self.type, self.dataString, self.booleanSwitch, self.timeStamp, self.status];
+//}
 
 @end
