@@ -22,6 +22,7 @@
 		4566B16F1B15D1C300CC1EAA /* InfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B16E1B15D1C300CC1EAA /* InfoTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4566B1721B15D24C00CC1EAA /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B1711B15D24C00CC1EAA /* DataManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4566B1751B15D32700CC1EAA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4566B1741B15D32700CC1EAA /* DetailViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		45E36F7E1B1A6A330027854A /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 45E36F7D1B1A6A330027854A /* screen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		4566B1711B15D24C00CC1EAA /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		4566B1731B15D32700CC1EAA /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		4566B1741B15D32700CC1EAA /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		45E36F7D1B1A6A330027854A /* screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen.png; sourceTree = SOURCE_ROOT; };
 		545E40F9B8D3CAAF6620638B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0920D28270FD3B38356E742 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 		4566B1361B1501D100CC1EAA /* WebSocketManager */ = {
 			isa = PBXGroup;
 			children = (
+				45E36F7D1B1A6A330027854A /* screen.png */,
 				4566B1651B1503B800CC1EAA /* Model */,
 				4566B13B1B1501D100CC1EAA /* AppDelegate.h */,
 				4566B13C1B1501D100CC1EAA /* AppDelegate.m */,
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4566B1461B1501D100CC1EAA /* Main.storyboard in Resources */,
+				45E36F7E1B1A6A330027854A /* screen.png in Resources */,
 				4566B14B1B1501D100CC1EAA /* LaunchScreen.xib in Resources */,
 				4566B1481B1501D100CC1EAA /* Images.xcassets in Resources */,
 			);
