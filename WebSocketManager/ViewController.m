@@ -68,6 +68,8 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
 }
 
 - (void)dealloc {
+    [_receivedMessage release];
+    [_urlTextField release];
     [_webSocket release];
     [_factory release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -92,14 +94,22 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
     if([sender isOn]){
         // Switch is ON
         self.booleanSwitch.on = YES;
-        
+    } else{
+        // Switch is OFF
+        self.booleanSwitch.on = NO;
+    }
+}
+
+- (IBAction)connectionButton:(id)sender {
+    
+    if ([self.connectionButton.titleLabel.text  isEqual: @"Connect"]) {
         NSString *url = self.urlTextField.text;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self createAndEstablishwebSocketConnection:url];
             [self updateUI:YES];
         });
-    } else{
-        // Switch is OFF
+        
+    } else {
         [self log:@"CLOSE"];
         @try {
             [_webSocket close];
@@ -108,7 +118,6 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
         @catch (NSException *exception) {
             [self log:[exception reason]];
         }
-        self.booleanSwitch.on = NO;
     }
 }
 
@@ -253,17 +262,16 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
         
         NSDictionary *dictionary = @{@"dataString"  : packet.dataString,
                                      @"switch": packet.booleanSwitch,
-                                     @"date"  : [dateFormat stringFromDate:packet.timeStamp]};
+                                     @"date"  : [dateFormat stringFromDate:packet.timeStamp],
+                                     @"type"  : packet.type };
         
         if ([packet.type isEqualToString:@"XML"]) {
-            NSString *xml = @"\n<packet>\n";
-            
-            for (NSString *key in [dictionary allKeys]) {
-                NSString *value = dictionary[key];
-                xml = [xml stringByAppendingString:[NSString stringWithFormat:@"\t<%@>%@</%@>\n", key, value, key]];
-            }
-            
-            xml = [xml stringByAppendingString:@"</packet>"];
+            NSData *data = [NSPropertyListSerialization dataWithPropertyList:dictionary
+                                                                      format:NSPropertyListXMLFormat_v1_0
+                                                                     options:0
+                                                                       error:nil];
+            NSString* xml = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]autorelease];
+
             [self log:[NSString stringWithFormat:@"SEND MESSAGE: %@", xml]];
             dataToSend = xml;
             
@@ -295,8 +303,6 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
     }
 }
 
-
-
 - (void) log:(NSString *)msg {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString *text = msg;
@@ -320,7 +326,7 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
 - (void) updateUI:(BOOL)connectStatus {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (connectStatus) {
-            self.connectIndicator.text = @"Connect";
+            [self.connectionButton setTitle:@"Disconnect" forState:UIControlStateNormal];
             self.urlTextField.enabled = NO;
             self.urlTextField.backgroundColor = [UIColor lightGrayColor];
             self.messageTextField.enabled = YES;
@@ -329,7 +335,7 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
             self.sendButton.alpha = 1.0f;
             
         } else {
-            self.connectIndicator.text = @"Disconnect";
+            [self.connectionButton setTitle:@"Connect" forState:UIControlStateNormal];
             self.urlTextField.enabled = YES;
             self.urlTextField.backgroundColor = [UIColor whiteColor];
             self.messageTextField.enabled = NO;

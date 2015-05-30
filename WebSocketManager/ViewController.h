@@ -15,7 +15,7 @@ extern NSString *const ReceivedMessageUserInfoKey;
 
 @property (assign, nonatomic) IBOutlet UITextField *urlTextField;
 @property (assign, nonatomic) IBOutlet UITextField *messageTextField;
-@property (assign, nonatomic) IBOutlet UILabel *connectIndicator;
+@property (assign, nonatomic) IBOutlet UIButton *connectionButton;
 @property (assign, nonatomic) IBOutlet UIButton *sendButton;
 @property (assign, nonatomic) IBOutlet UITextView *textView;
 @property (assign, nonatomic) IBOutlet UISwitch *booleanSwitch;
