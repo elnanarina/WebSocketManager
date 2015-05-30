@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WebSocketManager/ViewController.m"
-            timestampString = "454602875.438797"
+            timestampString = "454714004.426572"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "-sendMessage:"
             landmarkType = "5">
          </BreakpointContent>

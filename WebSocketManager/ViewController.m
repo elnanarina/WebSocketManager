@@ -10,6 +10,7 @@
 #import "DataManager.h"
 #import "Packet.h"
 #import <KGWebSocket/WebSocket.h>
+#import "Reachability.h"
 
 NSString *const ReceivedMessageDidChangeNotification = @"ReceivedMessageDidChangeNotification";
 NSString *const ReceivedMessageUserInfoKey = @"ReceivedMessageUserInfoKey";
@@ -59,12 +60,20 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
     
     [self updateUI:NO];
     
+    
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     
     [nc addObserver:self
            selector:@selector(contextObjectsChangedNotification:)
                name:NSManagedObjectContextDidSaveNotification
              object:self.managedObjectContext];
+    
+    Reachability *reachabilityInfo;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:reachabilityInfo];
+    [reachabilityInfo startNotifier];
 }
 
 - (void)dealloc {
@@ -104,11 +113,20 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
     
     if ([self.connectionButton.titleLabel.text  isEqual: @"Connect"]) {
         NSString *url = self.urlTextField.text;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self createAndEstablishwebSocketConnection:url];
-            [self updateUI:YES];
-        });
         
+        Reachability *reachability = [Reachability reachabilityForInternetConnection];
+        NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+        
+        if (internetStatus != NotReachable) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [self createAndEstablishwebSocketConnection:url];
+                [self updateUI:YES];
+            });
+            NSLog(@"True connection");
+        } else {
+            NSLog(@"Warning: No internet connection");
+            //there-is-no-connection warning
+        }
     } else {
         [self log:@"CLOSE"];
         @try {
@@ -367,6 +385,21 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
                 }
             }
         }
+    }
+}
+
+- (void)reachabilityChanged: (NSNotification* )note
+{
+    Reachability* curReach = [note object];
+    NetworkStatus status = curReach.currentReachabilityStatus;
+    
+    switch (status) {
+        case NotReachable:
+            break;
+        case ReachableViaWiFi:
+            break;
+        case ReachableViaWWAN:
+            break;
     }
 }
 
