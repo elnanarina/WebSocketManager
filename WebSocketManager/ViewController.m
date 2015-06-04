@@ -295,8 +295,6 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
 
             [self log:[NSString stringWithFormat:@"SEND MESSAGE: %@", xml]];
             dataToSend = xml;
-            
-//            xml = nil;
         } else if ([packet.type isEqualToString:@"JSON"]) {
             
             NSError* error;
@@ -307,8 +305,6 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
             NSString* json = [[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] autorelease];
             [self log:[NSString stringWithFormat:@"SEND MESSAGE: %@", json]];
             dataToSend = json;
-            
-//            json = nil;
         } else if ([packet.type isEqualToString:@"BINARY"]) {
             NSData *binaryData = [NSKeyedArchiver archivedDataWithRootObject:dictionary];
             [self log:[NSString stringWithFormat:@"SEND MESSAGE: %@", binaryData]];
