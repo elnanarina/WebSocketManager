@@ -19,10 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="URL:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgp-gi-MqA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgp-gi-MqA">
                                 <rect key="frame" x="16" y="32" width="34" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="DNi-QL-xAj"/>
+                                    <constraint firstAttribute="width" constant="34" id="hvd-LM-3Yv"/>
+                                    <constraint firstAttribute="height" constant="21" id="wfR-sl-v8O"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,7 +37,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="qWr-tI-LdB"/>
                                 </connections>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hV0-Z8-vLI">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hV0-Z8-vLI">
                                 <rect key="frame" x="16" y="68" width="511" height="29"/>
                                 <segments>
                                     <segment title="XML"/>
@@ -117,8 +118,8 @@
                         <constraints>
                             <constraint firstItem="vA3-23-tOJ" firstAttribute="leading" secondItem="hV0-Z8-vLI" secondAttribute="leading" id="2g8-U7-IHE"/>
                             <constraint firstAttribute="centerX" secondItem="7lI-KD-IDT" secondAttribute="trailing" constant="4" id="2mw-Xn-aMF"/>
-                            <constraint firstItem="hV0-Z8-vLI" firstAttribute="leading" secondItem="Rgp-gi-MqA" secondAttribute="leading" id="47X-xq-klq"/>
                             <constraint firstItem="7lI-KD-IDT" firstAttribute="top" secondItem="hev-f7-Kwz" secondAttribute="bottom" constant="8" id="BCj-WZ-hKd"/>
+                            <constraint firstItem="Rgp-gi-MqA" firstAttribute="leading" secondItem="hev-f7-Kwz" secondAttribute="leading" id="Bnv-eA-mJ5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cb8-eA-Z6L" secondAttribute="bottom" constant="20" id="Fbq-vs-QLL"/>
                             <constraint firstItem="2a8-9K-Qn4" firstAttribute="trailing" secondItem="ErO-fh-YOg" secondAttribute="trailing" id="KIb-57-3XO"/>
                             <constraint firstItem="BI8-em-9xW" firstAttribute="leading" secondItem="vA3-23-tOJ" secondAttribute="trailing" constant="8" symbolic="YES" id="LHv-o9-rWm"/>
@@ -129,25 +130,30 @@
                             <constraint firstItem="hev-f7-Kwz" firstAttribute="top" secondItem="2a8-9K-Qn4" secondAttribute="bottom" constant="8" id="Ne2-BX-yxl"/>
                             <constraint firstItem="hev-f7-Kwz" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="PUw-Ss-ael"/>
                             <constraint firstItem="ErO-fh-YOg" firstAttribute="top" secondItem="m6b-vW-eta" secondAttribute="bottom" constant="8" symbolic="YES" id="QYN-Qe-vRC"/>
+                            <constraint firstItem="hV0-Z8-vLI" firstAttribute="top" secondItem="Rgp-gi-MqA" secondAttribute="bottom" constant="15" id="RoC-dE-fhL"/>
                             <constraint firstItem="m6b-vW-eta" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="WNP-Kl-dMf"/>
                             <constraint firstItem="on8-D9-zSY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="WT3-Jn-643"/>
                             <constraint firstItem="BI8-em-9xW" firstAttribute="top" secondItem="ErO-fh-YOg" secondAttribute="bottom" constant="8" symbolic="YES" id="X26-1Y-d12"/>
-                            <constraint firstItem="on8-D9-zSY" firstAttribute="leading" secondItem="Rgp-gi-MqA" secondAttribute="trailing" constant="8" symbolic="YES" id="Zdu-Gf-uj7"/>
+                            <constraint firstItem="Rgp-gi-MqA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="XLX-h4-MyQ"/>
+                            <constraint firstItem="on8-D9-zSY" firstAttribute="leading" secondItem="Rgp-gi-MqA" secondAttribute="trailing" constant="8" symbolic="YES" id="Ytu-4x-T1U"/>
                             <constraint firstItem="vA3-23-tOJ" firstAttribute="baseline" secondItem="2a8-9K-Qn4" secondAttribute="baseline" id="aqW-Ey-9FO"/>
                             <constraint firstItem="2a8-9K-Qn4" firstAttribute="leading" secondItem="BI8-em-9xW" secondAttribute="trailing" constant="8" symbolic="YES" id="b9T-a9-PrZ"/>
                             <constraint firstAttribute="centerX" secondItem="cb8-eA-Z6L" secondAttribute="leading" constant="-4" id="bia-Pt-YZO"/>
+                            <constraint firstItem="Rgp-gi-MqA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="gcH-va-RE6"/>
                             <constraint firstItem="m6b-vW-eta" firstAttribute="top" secondItem="on8-D9-zSY" secondAttribute="top" id="gnw-U4-dFD"/>
-                            <constraint firstItem="Rgp-gi-MqA" firstAttribute="leading" secondItem="hev-f7-Kwz" secondAttribute="leading" id="hB5-AW-L5Y"/>
                             <constraint firstItem="cb8-eA-Z6L" firstAttribute="top" secondItem="hev-f7-Kwz" secondAttribute="bottom" constant="8" id="k20-uD-dE5"/>
                             <constraint firstItem="cb8-eA-Z6L" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="nIK-ds-qH8"/>
                             <constraint firstAttribute="centerY" secondItem="hev-f7-Kwz" secondAttribute="bottom" constant="8" id="nSF-QZ-5ce"/>
-                            <constraint firstItem="Rgp-gi-MqA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="o5y-UI-9a6"/>
                             <constraint firstItem="m6b-vW-eta" firstAttribute="trailing" secondItem="ErO-fh-YOg" secondAttribute="trailing" id="s6M-Im-az6"/>
-                            <constraint firstItem="hV0-Z8-vLI" firstAttribute="top" secondItem="Rgp-gi-MqA" secondAttribute="bottom" constant="15" id="tbr-7P-x4k"/>
                             <constraint firstItem="7lI-KD-IDT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="u0b-FJ-ehF"/>
                             <constraint firstItem="BI8-em-9xW" firstAttribute="top" secondItem="2a8-9K-Qn4" secondAttribute="top" id="w9F-is-d63"/>
-                            <constraint firstItem="Rgp-gi-MqA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="wrw-Gn-qvu"/>
+                            <constraint firstItem="Rgp-gi-MqA" firstAttribute="leading" secondItem="hV0-Z8-vLI" secondAttribute="leading" id="ySe-BU-ps8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gcH-va-RE6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="booleanSwitch" destination="ErO-fh-YOg" id="S5x-gB-3Nw"/>

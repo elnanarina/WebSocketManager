@@ -81,7 +81,6 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
 - (void)dealloc {
     [_reachabilityInfo release];
     [_receivedMessage release];
-    [_urlTextField release];
     [_webSocket release];
     [_factory release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -292,11 +291,12 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
                                                                       format:NSPropertyListXMLFormat_v1_0
                                                                      options:0
                                                                        error:nil];
-            NSString* xml = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]autorelease];
+            NSString* xml = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 
             [self log:[NSString stringWithFormat:@"SEND MESSAGE: %@", xml]];
             dataToSend = xml;
             
+//            xml = nil;
         } else if ([packet.type isEqualToString:@"JSON"]) {
             
             NSError* error;
@@ -304,10 +304,11 @@ static NSString* types[] = {@"XML", @"JSON", @"BINARY"};
                                                                options:NSJSONWritingPrettyPrinted
                                                                  error:&error];
             
-            NSString* json = [[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]autorelease];
+            NSString* json = [[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] autorelease];
             [self log:[NSString stringWithFormat:@"SEND MESSAGE: %@", json]];
             dataToSend = json;
             
+//            json = nil;
         } else if ([packet.type isEqualToString:@"BINARY"]) {
             NSData *binaryData = [NSKeyedArchiver archivedDataWithRootObject:dictionary];
             [self log:[NSString stringWithFormat:@"SEND MESSAGE: %@", binaryData]];
