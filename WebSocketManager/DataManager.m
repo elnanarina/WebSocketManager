@@ -23,10 +23,6 @@ static DataManager *manager = nil;
     return manager;
 }
 
-+ (id)allocWithZone:(NSZone *)zone {
-    return [[self sharedManager] retain];
-}
-
 - (id)copyWithZone:(NSZone *)zone {
     return self;
 }

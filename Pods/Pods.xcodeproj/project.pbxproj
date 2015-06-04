@@ -212,7 +212,7 @@
 		48D83C115C77ADC96BC952FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0630;
 			};
 			buildConfigurationList = 4652DDD447A55C6FBE0012F2 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -305,14 +305,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F70C39089DA079AB0A03099C /* Pods-Reachability-Private.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					"(armv7,",
-					"-",
-					Standard,
-					architectures,
-					"arm64)",
-				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Reachability/Pods-Reachability-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -329,14 +321,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F70C39089DA079AB0A03099C /* Pods-Reachability-Private.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					"(armv7,",
-					"-",
-					Standard,
-					architectures,
-					"arm64)",
-				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-Reachability/Pods-Reachability-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -353,14 +337,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7EFAFA3509253A02F89A324D /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					"(armv7,",
-					"-",
-					Standard,
-					architectures,
-					"arm64)",
-				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -411,14 +387,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 514B22329FD280A7113C57FA /* Pods.release.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					"(armv7,",
-					"-",
-					Standard,
-					architectures,
-					"arm64)",
-				);
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
